@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/25 11:18:17 by jeluiz4           #+#    #+#              #
-#    Updated: 2022/10/25 22:01:08 by jeluiz4          ###   ########.fr        #
+#    Created: 2022/10/26 15:55:02 by jeluiz4           #+#    #+#              #
+#    Updated: 2022/10/26 15:55:39 by jeluiz4          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,11 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-%.o: %.c
-	$(CC) $(FLAGS) -Imlx -I/usr/include -Imlx_linux -O3 -c $< -o $@
-
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(FLAGS) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+
+$(OBJS): $(SRCS)
+	$(CC) $(FLAGS) $(SRCS) -I/usr/include -lmlx_Linux -O3 -c
 
 clean:
 	rm -f $(OBJS)
@@ -31,3 +31,4 @@ fclean:
 	rm -f $(NAME) $(OBJS)
 
 re: fclean all
+
