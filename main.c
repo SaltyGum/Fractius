@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 11:13:27 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/10/25 22:00:01 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/10/25 22:11:31 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(void)
 	t_data	img;
 	int		i;
 
-	i = 50;
+	i = 5;
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 800, 600, "Hello world!");
 	img.img = mlx_new_image(mlx, 800, 600);
@@ -35,7 +35,7 @@ int	main(void)
 								&img.endian);
 	while(i < 100)
 	{
-		my_mlx_pp(&img, 25, i, 0x00FF0000);
+		my_mlx_pp(&img, i, i, 0x00FF0000);
 		i++;
 	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
