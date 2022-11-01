@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 11:13:27 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/10/26 17:16:16 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/10/31 17:41:36 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,54 @@ void	my_mlx_pp(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
+}
+
+int	mandelb(double *zr, double *zi, int y, int x)
+{
+	double	zr2;
+	double	zi2;
+	int		i;
+
+	i = 0;
+	zr2 = *zr * *zr;
+	zi2 = *zi * *zi;
+	while ((i < MAX_IT) && ((zr2 + zi2) < 4))
+	{
+		*zi = 2 * *zr * *zi + (I_BEG + (y * (I_END - I_BEG) / WIDTH));
+		*zr = zr2 - zi2 + (R_BEG + (x * ((R_END - R_BEG) / HEIGHT)));
+		zr2 = *zr * *zr;
+		zi2 = *zi * *zi;
+		i++;
+	}
+	return (i);
+}
+
+void	ft_mb(t_data img, int x, int y, int color)
+{
+	double	zr;
+	double	zi;
+	double	cr;
+	double	ci;
+
+	while (y < HEIGHT)
+	{
+		x = 0;
+		//ci = I_BEG + y * ((I_END - I_BEG) / HEIGHT);
+		while (x < WIDTH)
+		{
+			//cr = R_BEG + x *((R_END - R_BEG) / WIDTH);
+			zr = 0.0;
+			zi = 0.0;
+			color = mandelb(&zr, &zi, y, x);
+			if (color == MAX_IT)
+				my_mlx_pp(&img, x, y, 0x000000);
+			else
+				my_mlx_pp(&img, x, y, 0x0000FF);
+			x++;
+		}
+		y++;
+	}
 }
 
 int	main(void)
@@ -25,89 +72,15 @@ int	main(void)
 	void	*mlx;
 	void	*mlx_win;
 	t_data	img;
-	int		y;
-	int		x;
-	int		aux;
+	int		c;
+	int		m;
 
-	y = 0;
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 800, 600, "Hello world!");
-	img.img = mlx_new_image(mlx, 800, 600);
+	mlx_win = mlx_new_window(mlx, WIDTH, HEIGHT, "Fract-oil");
+	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
-	// borda esquerda
-	while(y <= 100)
-	{
-		x = 0;
-		while(x <= 600)
-		{
-			my_mlx_pp(&img, y, x, 0x00FF00);
-			x++;
-		}
-		y++;
-	}
-	//borda topo
-	while(y <= 800)
-	{
-		x = 0;
-		while(x <= 100)
-		{
-			my_mlx_pp(&img, y, x, 0x00FF00);
-			x++;
-		}
-		y++;
-	}
-	// borda direita
-	y = 700;
-	while(y <= 800)
-	{
-		x = 0;
-		while(x <= 600)
-		{
-			my_mlx_pp(&img, y, x, 0x00FF00);
-			x++;
-		}
-		y++;
-	}
-	// borda base
-	y = 0;
-	while(y <= 800)
-	{
-		x = 400;
-		while(x <= 600)
-		{
-			my_mlx_pp(&img, y, x, 0x00FF00);
-			x++;
-		}
-		y++;
-	}
-	// retangulo laranja
-	y = 100;
-	while(y <= 700)
-	{
-		x = 100;
-		while(x <= 400)
-		{
-			my_mlx_pp(&img, y, x, 0xFF4A05);
-			x++;
-		}
-		y++;
-	}
-	// triangulo azul
-	y = 400;
-	x = 100;
-	aux = y;
-	while (y <= 700)
-	{
-		aux = 400 - (x - 100);
-		while (aux <= y)
-		{
-			my_mlx_pp(&img, aux, x, 0x0000FF);
-			aux++;
-		}
-		x++;
-		y++;
-	}
+			&img.endian);
+	ft_mb(img, 0, 0, 0);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 }
