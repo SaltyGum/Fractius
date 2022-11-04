@@ -6,14 +6,14 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:40:49 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/11/04 16:37:45 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/11/04 17:14:43 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_FRACT_H
 # define LIB_FRACT_H
-# define WIDTH 1000
-# define HEIGHT 1000
+# define WIDTH 800
+# define HEIGHT 800
 # define MAX_IT 200
 
 # define R_BEG -2.5

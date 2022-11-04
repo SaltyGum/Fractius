@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 11:13:27 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/11/04 16:32:58 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/11/04 16:56:59 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ double	mandelb(double *zr, double *zi, double y, double x)
 	while ((i < MAX_IT) && ((zr2 + zi2) < 4))
 	{
 		*zi = fabs(2.0 * *zr * *zi) + (I_BEG + (y * (I_END - I_BEG) / WIDTH));
-		*zr = zr2 - zi2 + (R_BEG + (x * ((R_END - R_BEG) / HEIGHT)));
+		*zr = sqrt(zr2) - sqrt(zi2) + (R_BEG + (x * ((R_END - R_BEG) / HEIGHT)));
 		zr2 = *zr * *zr;
 		zi2 = *zi * *zi;
 		i++;
@@ -64,7 +64,7 @@ void	ft_mb(t_data img, double x, double y, double color)
 				my_mlx_pp(&img, x, y, 0x000000);
 			else
 			{
-				color = (color * 255 / MAX_IT) * 42 * 42;
+				color = (color * 255 / MAX_IT) * 84 * 42;
 				my_mlx_pp(&img, x, y, color);
 			}
 			x++;
