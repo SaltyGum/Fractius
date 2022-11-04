@@ -6,20 +6,20 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:40:49 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/10/31 16:56:44 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/11/04 16:37:45 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_FRACT_H
 # define LIB_FRACT_H
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 1000
+# define HEIGHT 1000
 # define MAX_IT 200
 
 # define R_BEG -2.5
 # define R_END 1.5
-# define I_BEG -2
-# define I_END 2
+# define I_BEG -2.0
+# define I_END 2.0
 
 # include <stdlib.h>
 # include "mlx_linux/mlx.h"
