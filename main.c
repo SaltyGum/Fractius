@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 11:13:27 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/11/04 16:56:59 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/11/06 18:29:32 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	my_mlx_pp(t_data *data, int x, int y, int color)
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+}
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 double	mandelb(double *zr, double *zi, double y, double x)
@@ -61,11 +66,11 @@ void	ft_mb(t_data img, double x, double y, double color)
 			zi = 0.0;
 			color = mandelb(&zr, &zi, y, x);
 			if (color == MAX_IT)
-				my_mlx_pp(&img, x, y, 0x000000);
+				my_mlx_pp(&img, x, y, create_trgb(0, 0, 0, 0));
 			else
 			{
 				color = (color * 255 / MAX_IT) * 84 * 42;
-				my_mlx_pp(&img, x, y, color);
+				my_mlx_pp(&img, x, y, create_trgb(0, color, 0, 255));
 			}
 			x++;
 		}
