@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:40:49 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/11/06 19:13:30 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/11/07 19:46:11 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define LIB_FRACT_H
 
 // Screen size and mx iterations
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 800.0
+# define HEIGHT 800.0
 # define MAX_IT 200
 
 // Starting point Fractal
@@ -55,5 +55,16 @@ typedef struct s_data {
 	int		line_length;
 	int		endian;
 }				t_data;
+
+typedef struct s_variables {
+	double	z;
+	double	y;
+	double	zr;
+	double	zi;
+	double	zr2;
+	double	zi2;
+	double	ci;
+	double	cr;
+}				t_vars;
 
 #endif
