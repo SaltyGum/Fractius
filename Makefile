@@ -6,11 +6,11 @@
 #    By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 15:55:02 by jeluiz4           #+#    #+#              #
-#    Updated: 2022/11/07 19:48:46 by jeluiz4          ###   ########.fr        #
+#    Updated: 2022/11/07 19:50:09 by jeluiz4          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c
+SRCS = julia.c
 CC = gcc
 FLAGS = -Wall -Wextra
 NAME = fractol
