@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 11:13:27 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/11/07 19:51:08 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/11/17 20:29:11 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,24 @@ void	ft_mb(t_data img, double x, double y, double color)
 	}
 }
 
+int	ft_close(int keycode, t_win *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
+	exit (13);
+}
+
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
+	t_win	mlx;
 	t_data	img;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, WIDTH, HEIGHT, "Fract-oil");
-	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	mlx.mlx = mlx_init();
+	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "Fract-oil");
+	img.img = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
 	ft_mb(img, 0.0, 0.0, 0.0);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	mlx_put_image_to_window(mlx.mlx, mlx.win, img.img, 0, 0);
+	mlx_hook(mlx.win, 2, ESC_BUT, ft_close, &mlx);
+	mlx_loop(mlx.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:40:49 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/11/07 19:46:11 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/11/17 20:25:47 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@
 # include <math.h>
 
 typedef struct s_data {
+	void	*mlx;
+	void	*win;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -66,5 +68,10 @@ typedef struct s_variables {
 	double	ci;
 	double	cr;
 }				t_vars;
+
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}				t_win;
 
 #endif
