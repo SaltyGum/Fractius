@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 11:13:27 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/11/07 19:47:50 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/11/21 14:37:56 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ double	mandelb(double *zr, double *zi, double y, double x)
 	zi2 = *zi * *zi;
 	while ((i < MAX_IT) && ((zr2 + zi2) < 4))
 	{
-		*zi = fabs(2.0 * *zr * *zi) + (I_BEG + (y * (I_END - I_BEG) / WIDTH));
-		*zr = sqrt(zr2) - sqrt(zi2) + (R_BEG + (x * ((R_END - R_BEG) / HEIGHT)));
+		*zi = 2.0 * *zr * *zi + (I_BEG + (y * (I_END - I_BEG) / WIDTH));
+		*zr = zr2 - zi2 + (R_BEG + (x * ((R_END - R_BEG) / HEIGHT)));
 		zr2 = *zr * *zr;
 		zi2 = *zi * *zi;
 		i++;
@@ -69,7 +69,7 @@ void	ft_mb(t_data img, double x, double y, double color)
 				my_mlx_pp(&img, x, y, create_trgb(0, 0, 0, 0));
 			else
 			{
-				color = (color * 255 / MAX_IT) * 84 * 42;
+				color = (color * 255 / MAX_IT) * 42;
 				my_mlx_pp(&img, x, y, create_trgb(0, color, 0, 255));
 			}
 			x++;

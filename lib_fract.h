@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:40:49 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/11/17 20:25:47 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/11/23 16:41:24 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // Screen size and mx iterations
 # define WIDTH 800.0
 # define HEIGHT 800.0
-# define MAX_IT 200
+# define MAX_IT 255
 
 // Starting point Fractal
 # define R_BEG -2.5
@@ -24,26 +24,26 @@
 # define I_BEG -2.0
 # define I_END 2.0
 
-// Buttons setup
+// Buttons setup mac
 
 // ARROWS
-# define A_UP 62
-# define A_DOWN 68
-# define A_LEFT 64
-# define A_RIGHT 66
+# define A_UP 126
+# define A_DOWN 125
+# define A_LEFT 123
+# define A_RIGHT 124
 // SCROLLING
 # define SCRL_UP 3
 # define SCRL_DOWN 4
 // COLOR CHANGE HELP PANEL AND RESET
-# define C_BUT 36
-# define H_BUT 28
-# define R_BUT 18
+# define C_BUT 8
+# define H_BUT 4
+# define R_BUT 15
 // WINDOW CLOSE
-# define ESC_BUT 9
+# define ESC_BUT 53
 
 //Includes
 # include <stdlib.h>
-# include "mlx_linux/mlx.h"
+# include "mlx/mlx.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <math.h>
@@ -73,5 +73,11 @@ typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
 }				t_win;
+
+typedef struct s_structs {
+	t_data	img;
+	t_win	mlx;
+	t_vars	vars;
+}				t_all;
 
 #endif
