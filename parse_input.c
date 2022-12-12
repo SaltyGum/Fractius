@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:49:03 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/12/12 00:04:17 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/12/12 01:21:58 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,9 @@ void	blk_init(t_data *blk, char **argv, int argc)
 	blk->i_beg = -2.0;
 	blk->r_end = 1.5;
 	blk->r_beg = -2.5;
+	blk->palet = 2;
+	blk->r = 2;
+	blk->b = 13;
 }
 
 int	main(int argc, char *argv[])

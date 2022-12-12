@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:40:49 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/12/12 00:09:48 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/12/12 01:18:07 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@
 //Structs
 typedef struct s_data
 {
+	int		palet;
+	double	r;
+	double	g;
+	double	b;
 	double	r_beg;
 	double	r_end;
 	double	i_beg;
@@ -87,5 +91,5 @@ int		ft_isdigit(int c);
 int		ft_isspace(int c);
 void	ft_putstr(char *str);
 int		ft_strcmp(char	*s1, char *s2);
-
+void	ft_palet(t_data *blk);
 #endif

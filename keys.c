@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 21:22:31 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/12/11 22:58:07 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/12/12 01:21:04 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ void	key_maker(t_data *blk, int key)
 
 	mid_i = blk->i_end - blk->i_beg;
 	mid_r = blk->r_end - blk->r_beg;
-	if (key == A_UP)
+	if (key == 1)
 	{
 		blk->i_end -= mid_i * 0.15;
 		blk->i_beg -= mid_i * 0.15;
 	}
-	if (key == A_DOWN)
+	if (key == 2)
 	{
 		blk->i_end += mid_i * 0.15;
 		blk->i_beg += mid_i * 0.15;
 	}
-	if (key == A_LEFT)
+	if (key == 3)
 	{
 		blk->r_end -= mid_r * 0.15;
 		blk->r_beg -= mid_r * 0.15;
 	}
-	if (key == A_RIGHT)
+	if (key == 4)
 	{
 		blk->r_end += mid_r * 0.15;
 		blk->r_beg += mid_r * 0.15;
@@ -64,6 +64,8 @@ int	clk_act(int key, int x, int y, t_data *blk)
 	blk->i_beg = ft_translate(i, blk->i_beg, (1.0 * zoom));
 	blk->r_beg = ft_translate(r, blk->r_beg, (1.0 * zoom));
 	ft_render(blk);
+	printf("olha ai REAL %f %f \n", blk->r_end, blk->r_beg);
+	printf("olha ai IMAG %f %f \n", blk->i_end, blk->i_beg);
 	return (0);
 }
 
@@ -71,19 +73,19 @@ int	ch_ose(int key, t_data *blk)
 {
 	if (key == ESC_BUT)
 		ft_close(blk);
-	if (key == A_UP)
-		key_maker(blk, A_UP);
-	if (key == A_DOWN)
-		key_maker(blk, A_DOWN);
-	if (key == A_LEFT)
-		key_maker(blk, A_LEFT);
-	if (key == A_RIGHT)
-		key_maker(blk, A_RIGHT);
-	if (key == C_BUT)
-		key_maker(blk, C_BUT);
-	if (key == H_BUT)
+	else if (key == A_UP)
+		key_maker(blk, 1);
+	else if (key == A_DOWN)
+		key_maker(blk, 2);
+	else if (key == A_LEFT)
+		key_maker(blk, 3);
+	else if (key == A_RIGHT)
+		key_maker(blk, 4);
+	else if (key == C_BUT)
+		ft_palet(blk);
+	else if (key == H_BUT)
 		key_maker(blk, H_BUT);
-	if (key == R_BUT)
+	else if (key == R_BUT)
 		key_maker(blk, R_BUT);
 	ft_render(blk);
 	return (0);

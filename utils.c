@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:57:57 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/12/12 00:10:17 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/12/12 01:05:35 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ double	ft_trigger(t_data *blk)
 	if (ft_strcmp(blk->type, "julia") == 0)
 		return (julia(blk));
 	ft_close(blk);
-	return	(0.0);
+	return (0.0);
 }
 
 void	ft_render(t_data *blk)
@@ -56,12 +56,15 @@ void	ft_render(t_data *blk)
 			{
 				blk->color = (blk->color * 255 / MAX_IT);
 				my_mlx_pp(blk, blk->x, blk->y,
-					create_trgb(0, blk->color * 2, 0, blk->color * 13));
+					create_trgb(0, blk->color * blk->r,
+						blk->color * blk->g,
+						blk->color * blk->b));
 			}
 			blk->x++;
 		}
 		blk->y++;
 	}
+	mlx_put_image_to_window(blk->mlx, blk->win, blk->img, 0, 0);
 }
 
 int	ft_close(t_data *blk)
@@ -73,6 +76,6 @@ int	ft_close(t_data *blk)
 		mlx_destroy_window(blk->mlx, blk->win);
 		free(blk->mlx);
 	}
-	printf("END\n");
+	ft_putstr("END\n");
 	exit(200);
 }
