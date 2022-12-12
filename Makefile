@@ -6,7 +6,7 @@
 #    By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 15:55:02 by jeluiz4           #+#    #+#              #
-#    Updated: 2022/12/12 01:16:29 by jeluiz4          ###   ########.fr        #
+#    Updated: 2022/12/12 16:13:43 by jeluiz4          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ SRCS =	utils.c \
 		parse_input.c \
 		keys.c \
 		lib_use.c \
-		plus.c
+		plus.c \
+		menu.c
 
 CC = gcc
 FLAGS = -Wall -Wextra

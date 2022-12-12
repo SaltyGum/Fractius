@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:49:03 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/12/12 13:01:46 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/12/12 16:13:10 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ int	main(int argc, char *argv[])
 	blk_init(&blk, argv, argc);
 	blk.mlx = mlx_init();
 	blk.win = mlx_new_window(blk.mlx, WIDTH, HEIGHT, "Fract-oil");
+	ft_menu();
 	blk.img = mlx_new_image(blk.mlx, WIDTH, HEIGHT);
 	blk.addr = mlx_get_data_addr(blk.img, &blk.bits_per_pixel, &blk.line_length,
 			&blk.endian);

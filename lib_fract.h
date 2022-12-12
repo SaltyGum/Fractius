@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:40:49 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/12/12 12:38:54 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/12/12 16:13:26 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # define SCRL_DOWN 5
 // COLOR CHANGE HELP PANEL AND RESET
 # define C_BUT 99
-# define H_BUT 104
 # define R_BUT 114
 // WINDOW CLOSE
 # define ESC_BUT 65307
@@ -39,7 +38,7 @@
 //Includes
 # include <stdlib.h>
 # include "mlx_linux/mlx.h"
-# include <stdio.h>
+//# include <stdio.h>
 # include <unistd.h>
 # include <math.h>
 
@@ -93,4 +92,5 @@ void	ft_putstr(char *str);
 int		ft_strcmp(char	*s1, char *s2);
 void	ft_palet(t_data *blk);
 void	ft_reset(t_data *blk, int key);
+void	ft_menu(void);
 #endif
