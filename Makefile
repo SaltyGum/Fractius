@@ -6,11 +6,16 @@
 #    By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 15:55:02 by jeluiz4           #+#    #+#              #
-#    Updated: 2022/11/07 19:50:09 by jeluiz4          ###   ########.fr        #
+#    Updated: 2022/12/11 23:15:20 by jeluiz4          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = julia.c
+SRCS =	utils.c \
+		triggers.c \
+		parse_input.c \
+		keys.c \
+		lib_use.c \
+
 CC = gcc
 FLAGS = -Wall -Wextra
 NAME = fractol
@@ -32,3 +37,5 @@ fclean:
 
 re: fclean all
 
+.PHONY:
+	

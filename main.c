@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 11:13:27 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/11/07 19:47:50 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/12/11 19:24:45 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-double	mandelb(double *zr, double *zi, double y, double x)
+double	mandelbo(double *zr, double *zi, double y, double x)
 {
 	double	zr2;
 	double	zi2;
@@ -36,8 +36,8 @@ double	mandelb(double *zr, double *zi, double y, double x)
 	zi2 = *zi * *zi;
 	while ((i < MAX_IT) && ((zr2 + zi2) < 4))
 	{
-		*zi = fabs(2.0 * *zr * *zi) + (I_BEG + (y * (I_END - I_BEG) / WIDTH));
-		*zr = sqrt(zr2) - sqrt(zi2) + (R_BEG + (x * ((R_END - R_BEG) / HEIGHT)));
+		*zi = -(2.0 * *zr * *zi) + (I_BEG + (y * (I_END - I_BEG) / WIDTH));
+		*zr = zr2 - zi2 + (R_BEG + (x * ((R_END - R_BEG) / HEIGHT)));
 		zr2 = *zr * *zr;
 		zi2 = *zi * *zi;
 		i++;
@@ -48,7 +48,7 @@ double	mandelb(double *zr, double *zi, double y, double x)
 	return (i);
 }
 
-void	ft_mb(t_data img, double x, double y, double color)
+void	ft_mbo(t_data img, double x, double y, double color)
 {
 	double	zr;
 	double	zi;
@@ -58,10 +58,8 @@ void	ft_mb(t_data img, double x, double y, double color)
 	while (y < HEIGHT)
 	{
 		x = 0;
-		//ci = I_BEG + y * ((I_END - I_BEG) / HEIGHT);
 		while (x < WIDTH)
 		{
-			//cr = R_BEG + x *((R_END - R_BEG) / WIDTH);
 			zr = 0.0;
 			zi = 0.0;
 			color = mandelb(&zr, &zi, y, x);
@@ -76,22 +74,4 @@ void	ft_mb(t_data img, double x, double y, double color)
 		}
 		y++;
 	}
-}
-
-int	main(void)
-{
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-	int		c;
-	int		m;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, WIDTH, HEIGHT, "Fract-oil");
-	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
-	ft_mb(img, 0.0, 0.0, 0.0);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
 }

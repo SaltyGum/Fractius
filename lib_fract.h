@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:40:49 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/11/17 20:25:47 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/12/12 00:09:48 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,23 @@
 # define HEIGHT 800.0
 # define MAX_IT 200
 
-// Starting point Fractal
-# define R_BEG -2.5
-# define R_END 1.5
-# define I_BEG -2.0
-# define I_END 2.0
-
 // Buttons setup
 
 // ARROWS
-# define A_UP 62
-# define A_DOWN 68
-# define A_LEFT 64
-# define A_RIGHT 66
+# define A_UP 65362
+# define A_DOWN 65364
+# define A_LEFT 65361
+# define A_RIGHT 65363
 // SCROLLING
-# define SCRL_UP 3
-# define SCRL_DOWN 4
+# define SCRL_UP 4
+# define SCRL_DOWN 5
 // COLOR CHANGE HELP PANEL AND RESET
-# define C_BUT 36
-# define H_BUT 28
-# define R_BUT 18
+# define C_BUT 99
+# define H_BUT 104
+# define R_BUT 114
 // WINDOW CLOSE
-# define ESC_BUT 9
+# define ESC_BUT 65307
+# define WIN_X 17
 
 //Includes
 # include <stdlib.h>
@@ -48,7 +43,14 @@
 # include <unistd.h>
 # include <math.h>
 
-typedef struct s_data {
+//Structs
+typedef struct s_data
+{
+	double	r_beg;
+	double	r_end;
+	double	i_beg;
+	double	i_end;
+	char	*type;
 	void	*mlx;
 	void	*win;
 	void	*img;
@@ -56,10 +58,7 @@ typedef struct s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_data;
-
-typedef struct s_variables {
-	double	z;
+	double	x;
 	double	y;
 	double	zr;
 	double	zi;
@@ -67,11 +66,26 @@ typedef struct s_variables {
 	double	zi2;
 	double	ci;
 	double	cr;
-}				t_vars;
+	double	color;
+}				t_data;
 
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_win;
+//Functions
+double	dove(t_data *blk);
+double	julia(t_data *blk);
+double	mandelb(t_data *blk);
+double	burn_ship(t_data *blk);
+double	tri_fact(t_data *blk);
+void	ft_render(t_data *blk);
+int		ft_close(t_data *blk);
+void	key_maker(t_data *blk, int key);
+void	blk_init(t_data *blk, char **argv, int argc);
+double	ft_translate(double start, double end, double trans);
+int		clk_act(int key, int x, int y, t_data *blk);
+int		ch_ose(int key, t_data *blk);
+int		ft_tolower(int c);
+int		ft_isdigit(int c);
+int		ft_isspace(int c);
+void	ft_putstr(char *str);
+int		ft_strcmp(char	*s1, char *s2);
 
 #endif
