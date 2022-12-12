@@ -6,13 +6,13 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 17:38:11 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/12/12 00:41:26 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/12/12 12:26:42 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_fract.h"
 
-double	dove(t_data *blk)
+double	dove(t_data *blk, double cr, double ci)
 {
 	double	i;
 
@@ -23,10 +23,8 @@ double	dove(t_data *blk)
 	blk->zi2 = blk->zi * blk->zi;
 	while ((i < MAX_IT) && ((blk->zr2 + blk->zi2) < 4))
 	{
-		blk->zi = fabs(2.0 * blk->zr * blk->zi)
-			+ (blk->i_beg + (blk->y * (blk->i_end - blk->i_beg) / WIDTH));
-		blk->zr = sqrt(blk->zr2) - sqrt(blk->zi2)
-			+ (blk->r_beg + (blk->x * ((blk->r_end - blk->r_beg) / HEIGHT)));
+		blk->zi = fabs(2.0 * blk->zr * blk->zi) + -ci;
+		blk->zr = sqrt(blk->zr2) - sqrt(blk->zi2) + cr;
 		blk->zr2 = blk->zr * blk->zr;
 		blk->zi2 = blk->zi * blk->zi;
 		i++;
@@ -37,13 +35,13 @@ double	dove(t_data *blk)
 	return (i);
 }
 
-double	julia(t_data *blk)
+double	julia(t_data *blk, double zr, double zi)
 {
 	double	i;
 
 	i = 0;
-	blk->zr = 2.0 * 2.0 * (blk->x - WIDTH / 2.0) / WIDTH;
-	blk->zi = 2.0 * 2.0 * (blk->y - HEIGHT / 2.0) / HEIGHT;
+	blk->zr = zr;
+	blk->zi = zi;
 	blk->zr2 = blk->zr * blk->zr;
 	blk->zi2 = blk->zi * blk->zi;
 	while ((i < MAX_IT) && ((blk->zr2 + blk->zi2) < 4))
@@ -60,7 +58,7 @@ double	julia(t_data *blk)
 	return (i);
 }
 
-double	burn_ship(t_data *blk)
+double	burn_ship(t_data *blk, double cr, double ci)
 {
 	double	i;
 
@@ -71,10 +69,8 @@ double	burn_ship(t_data *blk)
 	blk->zi2 = blk->zi * blk->zi;
 	while ((i < MAX_IT) && ((blk->zr2 + blk->zi2) < 4))
 	{
-		blk->zi = fabs(2.0 * blk->zr * blk->zi)
-			+ (blk->i_beg + (blk->y * (blk->i_end - blk->i_beg) / WIDTH));
-		blk->zr = sqrt(blk->zr2) - sqrt(blk->zi2)
-			+ (blk->r_beg + (blk->x * ((blk->r_end - blk->r_beg) / HEIGHT)));
+		blk->zi = fabs(2.0 * blk->zr * blk->zi) + -ci;
+		blk->zr = blk->zr2 - blk->zi2 + cr;
 		blk->zr2 = blk->zr * blk->zr;
 		blk->zi2 = blk->zi * blk->zi;
 		i++;
@@ -85,7 +81,7 @@ double	burn_ship(t_data *blk)
 	return (i);
 }
 
-double	tri_fact(t_data *blk)
+double	tri_fact(t_data *blk, double cr, double ci)
 
 {
 	double	i;
@@ -97,10 +93,8 @@ double	tri_fact(t_data *blk)
 	blk->zi2 = blk->zi * blk->zi;
 	while ((i < MAX_IT) && ((blk->zr2 + blk->zi2) < 4))
 	{
-		blk->zi = -(2.0 * blk->zr * blk->zi)
-			+ (blk->i_beg + (blk->y * (blk->i_end - blk->i_beg) / WIDTH));
-		blk->zr = blk->zr2 - blk->zi2
-			+ (blk->r_beg + (blk->x * ((blk->r_end - blk->r_beg) / HEIGHT)));
+		blk->zi = -(2.0 * blk->zr * blk->zi) + ci;
+		blk->zr = blk->zr2 - blk->zi2 + cr;
 		blk->zr2 = blk->zr * blk->zr;
 		blk->zi2 = blk->zi * blk->zi;
 		i++;
@@ -111,7 +105,7 @@ double	tri_fact(t_data *blk)
 	return (i);
 }
 
-double	mandelb(t_data *blk)
+double	mandelb(t_data *blk, double cr, double ci)
 {
 	double	i;
 
@@ -122,10 +116,8 @@ double	mandelb(t_data *blk)
 	blk->zi2 = blk->zi * blk->zi;
 	while ((i < MAX_IT) && ((blk->zr2 + blk->zi2) < 4))
 	{
-		blk->zi = 2.0 * blk->zr * blk->zi
-			+ (blk->i_beg + (blk->y * (blk->i_end - blk->i_beg) / WIDTH));
-		blk->zr = blk->zr2 - blk->zi2
-			+ (blk->r_beg + (blk->x * ((blk->r_end - blk->r_beg) / HEIGHT)));
+		blk->zi = 2.0 * blk->zr * blk->zi + ci;
+		blk->zr = blk->zr2 - blk->zi2 + cr;
 		blk->zr2 = blk->zr * blk->zr;
 		blk->zi2 = blk->zi * blk->zi;
 		i++;

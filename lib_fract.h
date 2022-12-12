@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:40:49 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/12/12 01:18:07 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/12/12 12:38:54 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ typedef struct s_data
 }				t_data;
 
 //Functions
-double	dove(t_data *blk);
-double	julia(t_data *blk);
-double	mandelb(t_data *blk);
-double	burn_ship(t_data *blk);
-double	tri_fact(t_data *blk);
+double	dove(t_data *blk, double cr, double ci);
+double	julia(t_data *blk, double zr, double zi);
+double	mandelb(t_data *blk, double cr, double ci);
+double	burn_ship(t_data *blk, double cr, double ci);
+double	tri_fact(t_data *blk, double cr, double ci);
 void	ft_render(t_data *blk);
 int		ft_close(t_data *blk);
 void	key_maker(t_data *blk, int key);
@@ -92,4 +92,5 @@ int		ft_isspace(int c);
 void	ft_putstr(char *str);
 int		ft_strcmp(char	*s1, char *s2);
 void	ft_palet(t_data *blk);
+void	ft_reset(t_data *blk, int key);
 #endif

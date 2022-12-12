@@ -6,7 +6,7 @@
 /*   By: jeluiz4 <jeffluiz97@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:57:57 by jeluiz4           #+#    #+#             */
-/*   Updated: 2022/12/12 01:05:35 by jeluiz4          ###   ########.fr       */
+/*   Updated: 2022/12/12 12:17:39 by jeluiz4          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,21 @@ int	create_trgb(int t, int r, int g, int b)
 
 double	ft_trigger(t_data *blk)
 {
+	double	pr;
+	double	pi;
+
+	pr = blk->r_beg + blk->x * (blk->r_end - blk->r_beg) / WIDTH;
+	pi = blk->i_end + blk->y * (blk->i_beg - blk->i_end) / HEIGHT;
 	if (ft_strcmp(blk->type, "mandelbrot") == 0)
-		return (mandelb(blk));
+		return (mandelb(blk, pr, pi));
 	if (ft_strcmp(blk->type, "tricorn") == 0)
-		return (tri_fact(blk));
+		return (tri_fact(blk, pr, pi));
 	if (ft_strcmp(blk->type, "burningship") == 0)
-		return (burn_ship(blk));
+		return (burn_ship(blk, pr, pi));
 	if (ft_strcmp(blk->type, "dove") == 0)
-		return (dove(blk));
+		return (dove(blk, pr, pi));
 	if (ft_strcmp(blk->type, "julia") == 0)
-		return (julia(blk));
+		return (julia(blk, pr, pi));
 	ft_close(blk);
 	return (0.0);
 }
